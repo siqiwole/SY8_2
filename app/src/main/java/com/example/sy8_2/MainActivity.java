@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
     TextView tv;
 
 
-    String googleWeatherUrl2 = "http://php.weather.sina.com.cn/xml.php?city=%B1%B1%BE%A9&password=DJOYnieT8234jlsK&day=0";
+    String WeatherUrl2 = "http://php.weather.sina.com.cn/xml.php?city=%B1%B1%BE%A9&password=DJOYnieT8234jlsK&day=0";
 
     /** Called when the activity is first created. */
     @Override
@@ -43,22 +43,22 @@ public class MainActivity extends Activity {
 
     }
 
-    // 使用HttpCient连接GoogleWeatherAPI
-    protected void httpClientConn() {
+    // 使用HttpCient连接WeatherAPI
+    protected <ResponseHandler> void httpClientConn() {
         //DefaultHttpClient
         DefaultHttpClient httpclient = new DefaultHttpClient();
         //HttpGet
-        HttpGet httpget = new HttpGet(googleWeatherUrl2);
+        HttpGet httpget = new HttpGet(WeatherUrl2);
         //ResponseHandler
         ResponseHandler responseHandler = new BasicResponseHandler();
 
         try {
             String content = httpclient.execute(httpget, responseHandler);
-            Toast.makeText(getApplicationContext(), "连接Google Weather API成功!",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "连接Weather API成功!",Toast.LENGTH_SHORT).show();
             //设置TextView
             tv.setText(content);
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "连接Google Weather API失败", Toast.LENGTH_SHORT)
+            Toast.makeText(getApplicationContext(), "连接Weather API失败", Toast.LENGTH_SHORT)
                     .show();
             e.printStackTrace();
         }
